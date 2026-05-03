@@ -11,11 +11,11 @@ Commdesk is structured using a **feature-based architecture**, enabling teams to
 
 This project focuses on:
 
-* ⚡ High performance
-* 🧩 Modular design
-* 🔐 Scalable state management
-* 📦 Clean folder structure
-* 🧠 Maintainable codebase
+- ⚡ High performance
+- 🧩 Modular design
+- 🔐 Scalable state management
+- 📦 Clean folder structure
+- 🧠 Maintainable codebase
 
 ---
 
@@ -79,9 +79,9 @@ features/
 
 This improves:
 
-* Maintainability
-* Team scalability
-* Code ownership
+- Maintainability
+- Team scalability
+- Code ownership
 
 ---
 
@@ -89,10 +89,10 @@ This improves:
 
 Each feature contains:
 
-* **components/** → UI
-* **hooks/** → logic abstraction
-* **services/** → API/business logic
-* **slice/** → state management
+- **components/** → UI
+- **hooks/** → logic abstraction
+- **services/** → API/business logic
+- **slice/** → state management
 
 ---
 
@@ -109,12 +109,12 @@ Each feature contains:
 
 ## ⚙️ Tech Stack
 
-* ⚛️ React (with TypeScript)
-* ⚡ Vite (build tool)
-* 🧠 Redux Toolkit / Zustand
-* 🌐 Axios / Fetch API
-* 🎨 CSS / Tailwind (optional)
-* 🧪 Jest / Vitest
+- ⚛️ React (with TypeScript)
+- ⚡ Vite (build tool)
+- 🧠 Redux Toolkit / Zustand
+- 🌐 Axios / Fetch API
+- 🎨 CSS / Tailwind (optional)
+- 🧪 Jest / Vitest
 
 ---
 
@@ -175,22 +175,22 @@ npm run test
 
 ## 📐 Best Practices Followed
 
-* ✅ Feature-based architecture
-* ✅ Clean code principles
-* ✅ Scalable state management
-* ✅ Reusable components
-* ✅ Separation of logic and UI
-* ✅ Environment-based configs
+- ✅ Feature-based architecture
+- ✅ Clean code principles
+- ✅ Scalable state management
+- ✅ Reusable components
+- ✅ Separation of logic and UI
+- ✅ Environment-based configs
 
 ---
 
 ## 🧩 Future Improvements
 
-* 🔄 Micro-frontend architecture
-* 🤖 AI-based communication insights
-* 📊 Advanced analytics dashboard
-* 🔐 Role-based access control (RBAC)
-* 🌍 Multi-language support
+- 🔄 Micro-frontend architecture
+- 🤖 AI-based communication insights
+- 📊 Advanced analytics dashboard
+- 🔐 Role-based access control (RBAC)
+- 🌍 Multi-language support
 
 ---
 
@@ -229,9 +229,9 @@ MERN Stack Developer | System Design Learner
 
 If you like this project:
 
-* ⭐ Star the repo
-* 🍴 Fork it
-* 📢 Share with others
+- ⭐ Star the repo
+- 🍴 Fork it
+- 📢 Share with others
 
 ---
 
