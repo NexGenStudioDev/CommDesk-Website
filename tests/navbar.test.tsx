@@ -1,7 +1,12 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { BrowserRouter, MemoryRouter } from 'react-router-dom';
-import { MobileMenu, Navbar, NavLinks, SearchBar } from '../src/components/navbar';
-import { beforeEach, describe, it, expect, vi } from 'vitest';
+import {
+  MobileMenu,
+  Navbar,
+  NavLinks,
+  SearchBar,
+} from '../src/components/navbar';
+import { afterEach, beforeEach, describe, it, expect, vi } from 'vitest';
 import { navItems } from '../src/types/navbar.types';
 
 const { toggleMobileMenuMock } = vi.hoisted(() => ({
@@ -27,11 +32,15 @@ beforeEach(() => {
   toggleMobileMenuMock.mockClear();
 });
 
+afterEach(() => {
+  vi.useRealTimers();
+});
+
 const renderNavbar = (isAuthenticated = false) => {
   return render(
     <BrowserRouter>
       <Navbar isAuthenticated={isAuthenticated} />
-    </BrowserRouter>
+    </BrowserRouter>,
   );
 };
 
@@ -70,30 +79,37 @@ describe('MobileMenu Component', () => {
           items={navItems}
           onClose={vi.fn()}
         />
-      </BrowserRouter>
+      </BrowserRouter>,
     );
 
-    expect(screen.getByRole('dialog', { name: /CommDesk/i })).toBeInTheDocument();
-    expect(screen.getByRole('navigation', { name: /Mobile navigation/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /Communities/i })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /Sign In/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole('dialog', { name: /CommDesk/i }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('navigation', { name: /Mobile navigation/i }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('link', { name: /Communities/i }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('button', { name: /Sign In/i }),
+    ).toBeInTheDocument();
   });
 
   it('shows logout instead of logged-out actions when authenticated', () => {
     render(
       <BrowserRouter>
-        <MobileMenu
-          isOpen
-          isAuthenticated
-          items={navItems}
-          onClose={vi.fn()}
-        />
-      </BrowserRouter>
+        <MobileMenu isOpen isAuthenticated items={navItems} onClose={vi.fn()} />
+      </BrowserRouter>,
     );
 
     expect(screen.getByRole('button', { name: /Logout/i })).toBeInTheDocument();
-    expect(screen.queryByRole('button', { name: /Sign In/i })).not.toBeInTheDocument();
-    expect(screen.queryByRole('button', { name: /Get Started/i })).not.toBeInTheDocument();
+    expect(
+      screen.queryByRole('button', { name: /Sign In/i }),
+    ).not.toBeInTheDocument();
+    expect(
+      screen.queryByRole('button', { name: /Get Started/i }),
+    ).not.toBeInTheDocument();
   });
 
   it('closes when Escape is pressed', () => {
@@ -107,7 +123,7 @@ describe('MobileMenu Component', () => {
           items={navItems}
           onClose={onClose}
         />
-      </BrowserRouter>
+      </BrowserRouter>,
     );
 
     fireEvent.keyDown(document, { key: 'Escape' });
@@ -125,7 +141,7 @@ describe('MobileMenu Component', () => {
           items={navItems}
           onClose={onClose}
         />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
     fireEvent.click(screen.getByRole('link', { name: 'About' }));
@@ -145,16 +161,18 @@ describe('MobileMenu Component', () => {
           onClose={vi.fn()}
           onSearch={onSearch}
         />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
-    fireEvent.change(screen.getByRole('searchbox', { name: /Search CommDesk/i }), {
-      target: { value: '  pricing  ' },
-    });
+    fireEvent.change(
+      screen.getByRole('searchbox', { name: /Search CommDesk/i }),
+      {
+        target: { value: '  pricing  ' },
+      },
+    );
     vi.advanceTimersByTime(300);
 
     expect(onSearch).toHaveBeenCalledWith('pricing');
-    vi.useRealTimers();
   });
 
   it('focuses drawer search when requested on open', () => {
@@ -167,10 +185,12 @@ describe('MobileMenu Component', () => {
           onClose={vi.fn()}
           focusSearchOnOpen
         />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
-    expect(screen.getByRole('searchbox', { name: /Search CommDesk/i })).toHaveFocus();
+    expect(
+      screen.getByRole('searchbox', { name: /Search CommDesk/i }),
+    ).toHaveFocus();
   });
 });
 
@@ -179,10 +199,13 @@ describe('Navbar interactions', () => {
     render(
       <MemoryRouter initialEntries={['/events']}>
         <NavLinks />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
-    expect(screen.getByRole('link', { name: 'Events' })).toHaveAttribute('aria-current', 'page');
+    expect(screen.getByRole('link', { name: 'Events' })).toHaveAttribute(
+      'aria-current',
+      'page',
+    );
   });
 
   it('focuses search with Ctrl+K and sends a debounced query', () => {
@@ -191,7 +214,9 @@ describe('Navbar interactions', () => {
 
     render(<SearchBar onSearch={onSearch} />);
 
-    const searchInput = screen.getByRole('textbox', { name: /Search CommDesk/i });
+    const searchInput = screen.getByRole('textbox', {
+      name: /Search CommDesk/i,
+    });
     fireEvent.keyDown(window, { key: 'k', ctrlKey: true });
     expect(searchInput).toHaveFocus();
 
@@ -199,7 +224,6 @@ describe('Navbar interactions', () => {
     vi.advanceTimersByTime(300);
 
     expect(onSearch).toHaveBeenCalledWith('communities');
-    vi.useRealTimers();
   });
 
   it('opens the mobile drawer with Ctrl+K when desktop search is hidden', () => {

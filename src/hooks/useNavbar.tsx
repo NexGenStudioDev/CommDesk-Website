@@ -10,13 +10,17 @@ interface NavbarContextType extends NavbarState {
 
 const NavbarContext = createContext<NavbarContextType | undefined>(undefined);
 
-export const NavbarProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const NavbarProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const getInitialTheme = (): 'light' | 'dark' | 'system' => {
     if (typeof window === 'undefined') {
       return 'system';
     }
 
-    return (localStorage.getItem('theme') as 'light' | 'dark' | 'system') || 'system';
+    return (
+      (localStorage.getItem('theme') as 'light' | 'dark' | 'system') || 'system'
+    );
   };
 
   const [state, setState] = useState<NavbarState>({
@@ -57,7 +61,10 @@ export const NavbarProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     root.removeAttribute('data-theme');
 
     if (theme === 'system') {
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)')
+        .matches
+        ? 'dark'
+        : 'light';
       root.classList.add(systemTheme);
       root.setAttribute('data-theme', systemTheme);
     } else {
@@ -69,7 +76,6 @@ export const NavbarProvider: React.FC<{ children: React.ReactNode }> = ({ childr
 
   const setTheme = (theme: 'light' | 'dark' | 'system') => {
     setState((prev) => ({ ...prev, theme }));
-    applyTheme(theme);
   };
 
   // Initial theme application
@@ -86,7 +92,8 @@ export const NavbarProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     const handleSystemThemeChange = () => applyTheme('system');
 
     mediaQuery.addEventListener('change', handleSystemThemeChange);
-    return () => mediaQuery.removeEventListener('change', handleSystemThemeChange);
+    return () =>
+      mediaQuery.removeEventListener('change', handleSystemThemeChange);
   }, [state.theme]);
 
   return (

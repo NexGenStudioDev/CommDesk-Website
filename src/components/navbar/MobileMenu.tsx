@@ -58,7 +58,9 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
       }
 
       const focusableElements = Array.from(
-        drawerRef.current.querySelectorAll<HTMLElement>(focusableElementsSelector)
+        drawerRef.current.querySelectorAll<HTMLElement>(
+          focusableElementsSelector,
+        ),
       );
       const firstElement = focusableElements[0];
       const lastElement = focusableElements[focusableElements.length - 1];
@@ -83,7 +85,12 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
 
   useEffect(() => {
     const handler = setTimeout(() => {
-      onSearch?.(searchQuery.trim());
+      const trimmedQuery = searchQuery.trim();
+      if (!trimmedQuery) {
+        return;
+      }
+
+      onSearch?.(trimmedQuery);
     }, 300);
 
     return () => clearTimeout(handler);
@@ -122,7 +129,10 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
             className="absolute inset-y-0 right-0 flex h-dvh w-full max-w-sm flex-col overflow-hidden border-l border-border bg-background text-foreground shadow-2xl sm:w-[85vw]"
           >
             <div className="flex shrink-0 items-center justify-between border-b border-border px-5 py-4">
-              <span id="mobile-menu-title" className="font-bold text-xl text-primary">
+              <span
+                id="mobile-menu-title"
+                className="font-bold text-xl text-primary"
+              >
                 CommDesk
               </span>
               <button
@@ -136,7 +146,10 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
             </div>
 
             <div className="shrink-0 border-b border-border px-4 py-4 sm:px-5">
-              <label className="block text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground" htmlFor="mobile-search">
+              <label
+                className="block text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground"
+                htmlFor="mobile-search"
+              >
                 Search
               </label>
               <div className="relative mt-3">
@@ -155,7 +168,10 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
               </div>
             </div>
 
-            <nav aria-label="Mobile navigation" className="min-h-0 flex-1 overflow-y-auto px-4 py-5 sm:px-5 sm:py-6">
+            <nav
+              aria-label="Mobile navigation"
+              className="min-h-0 flex-1 overflow-y-auto px-4 py-5 sm:px-5 sm:py-6"
+            >
               <div className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
                 Navigation
               </div>
@@ -181,7 +197,9 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
 
             <div className="shrink-0 space-y-3 border-t border-border bg-background px-4 py-4 sm:px-5 sm:py-5">
               <div className="flex items-center justify-between pb-1">
-                <span className="text-sm font-medium text-muted-foreground">Appearance</span>
+                <span className="text-sm font-medium text-muted-foreground">
+                  Appearance
+                </span>
                 <ThemeToggle />
               </div>
               {isAuthenticated ? (

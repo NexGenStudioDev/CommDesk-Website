@@ -23,7 +23,12 @@ export const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
 
   useEffect(() => {
     const handler = setTimeout(() => {
-      onSearch?.(query.trim());
+      const trimmedQuery = query.trim();
+      if (!trimmedQuery) {
+        return;
+      }
+
+      onSearch?.(trimmedQuery);
     }, 300);
 
     return () => clearTimeout(handler);

@@ -16,7 +16,11 @@ interface NavbarProps {
   onSearch?: (query: string) => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ isAuthenticated = false, onAuthToggle, onSearch }) => {
+export const Navbar: React.FC<NavbarProps> = ({
+  isAuthenticated = false,
+  onAuthToggle,
+  onSearch,
+}) => {
   const { isScrolled, isMobileMenuOpen, toggleMobileMenu } = useNavbar();
   const [shouldFocusMobileSearch, setShouldFocusMobileSearch] = useState(false);
 
@@ -25,11 +29,16 @@ export const Navbar: React.FC<NavbarProps> = ({ isAuthenticated = false, onAuthT
 
   useEffect(() => {
     const handleSearchShortcut = (event: KeyboardEvent) => {
-      if (!(event.metaKey || event.ctrlKey) || event.key.toLowerCase() !== 'k') {
+      if (
+        !(event.metaKey || event.ctrlKey) ||
+        event.key.toLowerCase() !== 'k'
+      ) {
         return;
       }
 
-      const desktopSearch = document.querySelector<HTMLInputElement>('[data-desktop-search]');
+      const desktopSearch = document.querySelector<HTMLInputElement>(
+        '[data-desktop-search]',
+      );
       if (desktopSearch && desktopSearch.offsetParent !== null) {
         return;
       }
@@ -61,7 +70,7 @@ export const Navbar: React.FC<NavbarProps> = ({ isAuthenticated = false, onAuthT
         'fixed top-0 left-0 right-0 z-40 transition-all duration-300',
         isScrolled
           ? 'h-16 bg-background/85 backdrop-blur-xl border-b border-border shadow-[0_8px_30px_rgba(0,0,0,0.08)]'
-          : 'h-[72px] bg-background/55 backdrop-blur-md border-b border-transparent'
+          : 'h-[72px] bg-background/55 backdrop-blur-md border-b border-transparent',
       )}
     >
       <div className="mx-auto flex h-full w-full max-w-[1600px] items-center gap-5 px-4 md:px-6 xl:gap-8 xl:px-8">
@@ -81,12 +90,16 @@ export const Navbar: React.FC<NavbarProps> = ({ isAuthenticated = false, onAuthT
         {/* Actions Section */}
         <div className="ml-auto flex shrink-0 items-center gap-2">
           <SearchBar onSearch={onSearch} />
-          
+
           <div className="hidden items-center 2xl:flex">
             <ThemeToggle />
           </div>
 
-          <UserMenu isAuthenticated={isAuthenticated} user={user} onAuthToggle={onAuthToggle} />
+          <UserMenu
+            isAuthenticated={isAuthenticated}
+            user={user}
+            onAuthToggle={onAuthToggle}
+          />
 
           {/* Mobile Menu Button */}
           <button

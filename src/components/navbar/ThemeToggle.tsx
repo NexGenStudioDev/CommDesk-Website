@@ -6,11 +6,17 @@ export const ThemeToggle: React.FC = () => {
   const { theme, setTheme } = useNavbar();
 
   return (
-    <div className="flex items-center rounded-full border border-border bg-muted/50 p-1" role="group" aria-label="Theme selector">
+    <div
+      className="flex items-center rounded-full border border-border bg-muted/50 p-1"
+      role="group"
+      aria-label="Theme selector"
+    >
       <button
         onClick={() => setTheme('light')}
         className={`rounded-full p-1.5 transition-all ${
-          theme === 'light' ? 'bg-background text-primary shadow-sm' : 'text-muted-foreground hover:text-foreground'
+          theme === 'light'
+            ? 'bg-background text-primary shadow-sm'
+            : 'text-muted-foreground hover:text-foreground'
         }`}
         aria-label="Light mode"
       >
@@ -19,7 +25,9 @@ export const ThemeToggle: React.FC = () => {
       <button
         onClick={() => setTheme('dark')}
         className={`rounded-full p-1.5 transition-all ${
-          theme === 'dark' ? 'bg-background text-primary shadow-sm' : 'text-muted-foreground hover:text-foreground'
+          theme === 'dark'
+            ? 'bg-background text-primary shadow-sm'
+            : 'text-muted-foreground hover:text-foreground'
         }`}
         aria-label="Dark mode"
       >
@@ -28,7 +36,9 @@ export const ThemeToggle: React.FC = () => {
       <button
         onClick={() => setTheme('system')}
         className={`rounded-full p-1.5 transition-all ${
-          theme === 'system' ? 'bg-background text-primary shadow-sm' : 'text-muted-foreground hover:text-foreground'
+          theme === 'system'
+            ? 'bg-background text-primary shadow-sm'
+            : 'text-muted-foreground hover:text-foreground'
         }`}
         aria-label="System mode"
       >
