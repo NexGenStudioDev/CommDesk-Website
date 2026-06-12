@@ -1,6 +1,6 @@
 import React from 'react';
 import { Sun, Moon, Monitor } from 'lucide-react';
-import { useNavbar } from '../../hooks/useNavbar';
+import { useNavbar } from '../hooks/useNavbar';
 
 export const ThemeToggle: React.FC = () => {
   const { theme, setTheme } = useNavbar();

@@ -5,16 +5,16 @@ import {
   Navbar,
   NavLinks,
   SearchBar,
-} from '../src/components/navbar';
+} from '../src/features/Nav/v1/components';
 import { afterEach, beforeEach, describe, it, expect, vi } from 'vitest';
-import { navItems } from '../src/types/navbar.types';
+import { navItems } from '../src/features/Nav/v1/types/navbar.types';
 
 const { toggleMobileMenuMock } = vi.hoisted(() => ({
   toggleMobileMenuMock: vi.fn(),
 }));
 
 // Mock the useNavbar hook
-vi.mock('../src/hooks/useNavbar', () => ({
+vi.mock('../src/features/Nav/v1/hooks/useNavbar', () => ({
   useNavbar: () => ({
     isScrolled: false,
     isMobileMenuOpen: false,

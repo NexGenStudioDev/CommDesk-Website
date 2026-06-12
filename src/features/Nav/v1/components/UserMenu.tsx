@@ -8,7 +8,7 @@ import {
   BellRing,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useNavbar } from '../../hooks/useNavbar';
+import { useNavbar } from '../hooks/useNavbar';
 
 interface UserMenuProps {
   isAuthenticated: boolean;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { navItems } from '../../types/navbar.types';
+import { navItems } from '../types/navbar.types';
 
 export const NavLinks: React.FC = () => {
   return (

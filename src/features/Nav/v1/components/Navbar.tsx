@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu } from 'lucide-react';
-import { useNavbar } from '../../hooks/useNavbar';
+import { useNavbar } from '../hooks/useNavbar';
 import { NavLinks } from './NavLinks';
 import { SearchBar } from './SearchBar';
 import { UserMenu } from './UserMenu';
 import { ThemeToggle } from './ThemeToggle';
 import { MobileMenu } from './MobileMenu';
-import { navItems } from '../../types/navbar.types';
-import { cn } from '../../utils/cn';
+import { navItems } from '../types/navbar.types';
+import { cn } from '../../../../utils/cn';
 
 interface NavbarProps {
   isAuthenticated?: boolean;

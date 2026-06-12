@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { LogOut, Search, X } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
-import type { NavItem } from '../../types/navbar.types';
+import type { NavItem } from '../types/navbar.types';
 
 interface MobileMenuProps {
   isOpen: boolean;
