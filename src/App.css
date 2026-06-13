@@ -19,6 +19,7 @@
 
 .hero {
   position: relative;
+  flex: 0 0 auto;
 
   .base,
   .framework,
@@ -63,11 +64,28 @@
   place-content: center;
   place-items: center;
   flex-grow: 1;
+  width: 100%;
+  min-height: calc(100svh - 72px);
+  box-sizing: border-box;
 
   @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
+    min-height: auto;
+    padding: 48px 20px 32px;
     gap: 18px;
   }
+
+  @media (max-width: 480px) {
+    padding: 36px 16px 28px;
+  }
+}
+
+.hero-copy {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding-inline: 16px;
 }
 
 #next-steps {
@@ -93,6 +111,12 @@
     flex-direction: column;
     text-align: center;
   }
+
+  @media (max-width: 480px) {
+    & > div {
+      padding: 24px 16px;
+    }
+  }
 }
 
 #docs {
@@ -101,6 +125,12 @@
   @media (max-width: 1024px) {
     border-right: none;
     border-bottom: 1px solid var(--border);
+  }
+
+  @media (max-width: 480px) {
+    li {
+      flex-basis: 100%;
+    }
   }
 }
 
