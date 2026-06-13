@@ -129,12 +129,17 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
             className="absolute inset-y-0 right-0 flex h-dvh w-full max-w-sm flex-col overflow-hidden border-l border-border bg-background text-foreground shadow-2xl sm:w-[85vw]"
           >
             <div className="flex shrink-0 items-center justify-between border-b border-border px-5 py-4">
-              <span
-                id="mobile-menu-title"
-                className="font-bold text-xl text-primary"
-              >
-                CommDesk
-              </span>
+              <div className="flex items-center gap-2">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-purple-600 shadow-md">
+                  <span className="text-white font-black text-sm select-none">C</span>
+                </div>
+                <span
+                  id="mobile-menu-title"
+                  className="font-black text-lg bg-gradient-to-r from-foreground to-primary/80 bg-clip-text text-transparent"
+                >
+                  CommDesk
+                </span>
+              </div>
               <button
                 ref={closeButtonRef}
                 onClick={onClose}
@@ -205,7 +210,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
               {isAuthenticated ? (
                 <button
                   onClick={handleAuthAction}
-                  className="flex w-full items-center justify-center gap-2 rounded-xl border border-border py-3 text-sm font-medium text-red-500 transition-colors hover:bg-red-500/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  className="flex w-full items-center justify-center gap-2 rounded-xl border border-border py-3 text-sm font-semibold text-red-500 dark:text-red-400 transition-colors hover:bg-red-500/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                 >
                   <LogOut className="h-4 w-4" />
                   Logout
@@ -214,13 +219,13 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
                 <>
                   <button
                     onClick={handleAuthAction}
-                    className="w-full rounded-xl border border-border py-3 text-center text-sm font-medium transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                    className="w-full rounded-xl border border-border py-3 text-center text-sm font-semibold text-foreground/80 transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                   >
                     Sign In
                   </button>
                   <button
                     onClick={handleAuthAction}
-                    className="w-full rounded-xl bg-primary py-3 text-center text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-transform active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                    className="w-full rounded-xl bg-gradient-to-r from-primary to-purple-600 py-3 text-center text-sm font-bold text-primary-foreground shadow-[0_4px_12px_rgba(170,59,255,0.3)] hover:shadow-[0_6px_16px_rgba(170,59,255,0.4)] transition-all active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                   >
                     Get Started
                   </button>
