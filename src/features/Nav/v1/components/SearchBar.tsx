@@ -1,11 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Search } from 'lucide-react';
+import { useNavbar } from '../hooks/useNavbar';
 
 interface SearchBarProps {
   onSearch?: (query: string) => void;
 }
 
 export const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
+  const { toggleSearch } = useNavbar();
   const inputRef = useRef<HTMLInputElement>(null);
   const [query, setQuery] = useState('');
 
@@ -13,46 +15,43 @@ export const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
         e.preventDefault();
+        toggleSearch();
         inputRef.current?.focus();
       }
     };
-
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  }, [toggleSearch]);
 
   useEffect(() => {
     const handler = setTimeout(() => {
       const trimmedQuery = query.trim();
-      if (!trimmedQuery) {
-        return;
-      }
-
+      if (!trimmedQuery) return;
       onSearch?.(trimmedQuery);
     }, 300);
-
     return () => clearTimeout(handler);
   }, [onSearch, query]);
 
   return (
-    <div className="group relative hidden xl:block">
-      <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
-        <Search className="h-4 w-4 text-muted-foreground group-focus-within:text-primary transition-colors" />
-      </div>
-      <input
-        ref={inputRef}
-        type="text"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        placeholder="Search..."
-        aria-label="Search CommDesk"
-        autoComplete="off"
-        data-desktop-search
-        className="h-10 w-40 rounded-full border border-border bg-background/70 pl-10 pr-10 text-sm backdrop-blur-sm transition-all focus:w-52 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 2xl:w-52 2xl:pr-12 2xl:focus:w-60"
-      />
-      <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none">
-        <kbd className="hidden 2xl:inline-flex h-5 select-none items-center gap-1 rounded border border-border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100">
-          <span className="text-xs">⌘</span>K
+    <div
+      onClick={toggleSearch}
+      className="group relative hidden xl:flex items-center cursor-pointer"
+    >
+      <div className="flex items-center gap-2 h-9 w-52 2xl:w-64 rounded-full border border-border bg-muted/40 hover:border-primary/40 hover:bg-muted/70 px-3.5 transition-all duration-200">
+        <Search className="h-3.5 w-3.5 text-muted-foreground group-hover:text-primary shrink-0 transition-colors" />
+        <input
+          ref={inputRef}
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          onClick={(e) => e.stopPropagation()}
+          placeholder="Search..."
+          aria-label="Search CommDesk"
+          data-desktop-search
+          className="flex-1 bg-transparent border-0 outline-none text-[13px] text-foreground placeholder:text-muted-foreground focus:outline-none min-w-0"
+        />
+        <kbd className="hidden sm:inline-flex h-5 shrink-0 select-none items-center gap-0.5 rounded border border-border bg-background px-1.5 font-mono text-[9px] font-medium text-muted-foreground">
+          <span className="text-[10px]">⌘</span>K
         </kbd>
       </div>
     </div>
