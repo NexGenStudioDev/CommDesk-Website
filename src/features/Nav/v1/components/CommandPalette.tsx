@@ -15,7 +15,7 @@ import {
   MessageSquare,
   ArrowRight,
 } from 'lucide-react';
-import { navItems } from '../types/navbar.types';
+
 
 interface CommandPaletteProps {
   isOpen: boolean;
@@ -39,7 +39,6 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
   onSearch,
 }) => {
   const navigate = useNavigate();
-  const overlayRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
   const [query, setQuery] = useState('');
