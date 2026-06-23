@@ -1,26 +1,14 @@
 export default function Features() {
   const features = [
-    {
-      title: 'Communities',
-      desc: 'Build and manage thriving communities.',
-    },
-    {
-      title: 'Events',
-      desc: 'Organize and engage members through events.',
-    },
-    {
-      title: 'Resources',
-      desc: 'Share documents and knowledge efficiently.',
-    },
-    {
-      title: 'Collaboration',
-      desc: 'Work together in one unified platform.',
-    },
+    { title: 'Communities', desc: 'Build and manage thriving communities.' },
+    { title: 'Events', desc: 'Organize and engage members through events.' },
+    { title: 'Resources', desc: 'Share documents and knowledge efficiently.' },
+    { title: 'Collaboration', desc: 'Work together in one unified platform.' },
   ];
 
   return (
     <section className="max-w-6xl mx-auto px-6 py-12">
-      <h2 className="text-4xl font-bold text-center mb-8">
+      <h2 className="text-4xl font-bold text-center mb-8 text-gray-900 dark:text-white">
         Features
       </h2>
 
@@ -28,15 +16,12 @@ export default function Features() {
         {features.map((feature) => (
           <div
             key={feature.title}
-            className="bg-[#14192c] rounded-xl p-6 hover:bg-[#1c2240] transition-all duration-300"
+            className="bg-gray-100 dark:bg-[#14192c] rounded-xl p-6 hover:bg-gray-200 dark:hover:bg-[#1c2240] transition-all duration-300"
           >
-            <h3 className="text-2xl font-semibold mb-3">
+            <h3 className="text-2xl font-semibold mb-3 text-gray-900 dark:text-white">
               {feature.title}
             </h3>
-
-            <p className="text-gray-400">
-              {feature.desc}
-            </p>
+            <p className="text-gray-600 dark:text-gray-400">{feature.desc}</p>
           </div>
         ))}
       </div>

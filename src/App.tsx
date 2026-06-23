@@ -33,10 +33,7 @@ function App() {
         onAuthToggle={() => setIsAuthenticated(!isAuthenticated)}
       />
       <Routes>
-        <Route
-          path="/"
-          element={<Home />}
-        />
+        <Route path="/" element={<Home />} />
         <Route
           path="/features"
           element={

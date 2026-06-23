@@ -84,18 +84,24 @@ export const UserMenu: React.FC<UserMenuProps> = ({
                 className="absolute right-0 top-12 z-50 w-80 overflow-hidden rounded-2xl border border-border/80 bg-background/95 dark:bg-background/85 backdrop-blur-xl shadow-2xl"
               >
                 <div className="flex items-center justify-between border-b border-border/40 px-4 py-3 bg-muted/20">
-                  <p className="text-xs font-bold tracking-wide uppercase text-foreground/80">Notifications</p>
+                  <p className="text-xs font-bold tracking-wide uppercase text-foreground/80">
+                    Notifications
+                  </p>
                   <BellRing className="h-4 w-4 text-primary" />
                 </div>
                 <div className="space-y-3.5 p-4 max-h-[300px] overflow-y-auto">
                   <div className="rounded-xl border border-border/60 bg-muted/20 p-3 hover:bg-muted/40 transition-colors">
-                    <p className="text-xs font-semibold text-foreground">New community message</p>
+                    <p className="text-xs font-semibold text-foreground">
+                      New community message
+                    </p>
                     <p className="mt-1 text-[11px] leading-relaxed text-muted-foreground">
                       Your team replied to the latest post in General.
                     </p>
                   </div>
                   <div className="rounded-xl border border-border/60 bg-muted/20 p-3 hover:bg-muted/40 transition-colors">
-                    <p className="text-xs font-semibold text-foreground">Event reminder</p>
+                    <p className="text-xs font-semibold text-foreground">
+                      Event reminder
+                    </p>
                     <p className="mt-1 text-[11px] leading-relaxed text-muted-foreground">
                       CommDesk Sync starts in 30 minutes. Join the link!
                     </p>
@@ -118,7 +124,11 @@ export const UserMenu: React.FC<UserMenuProps> = ({
           {/* Avatar circle */}
           <div className="relative h-6 w-6 rounded-full bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center text-white text-[11px] font-bold overflow-hidden shrink-0">
             {user?.avatar ? (
-              <img src={user.avatar} alt={user.name} className="h-full w-full object-cover" />
+              <img
+                src={user.avatar}
+                alt={user.name}
+                className="h-full w-full object-cover"
+              />
             ) : (
               user?.name.charAt(0)
             )}
@@ -144,7 +154,9 @@ export const UserMenu: React.FC<UserMenuProps> = ({
                 className="absolute right-0 mt-2.5 w-56 bg-background/95 dark:bg-background/85 border border-border/80 rounded-2xl shadow-2xl z-50 overflow-hidden backdrop-blur-xl"
               >
                 <div className="p-4 border-b border-border/40 bg-muted/10">
-                  <p className="text-sm font-bold text-foreground leading-none">{user?.name}</p>
+                  <p className="text-sm font-bold text-foreground leading-none">
+                    {user?.name}
+                  </p>
                   <p className="text-[10px] text-muted-foreground mt-1.5 truncate">
                     alex.johnson@commdesk.com
                   </p>

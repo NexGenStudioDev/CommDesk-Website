@@ -131,7 +131,9 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
             <div className="flex shrink-0 items-center justify-between border-b border-border px-5 py-4">
               <div className="flex items-center gap-2">
                 <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-purple-600 shadow-md">
-                  <span className="text-white font-black text-sm select-none">C</span>
+                  <span className="text-white font-black text-sm select-none">
+                    C
+                  </span>
                 </div>
                 <span
                   id="mobile-menu-title"

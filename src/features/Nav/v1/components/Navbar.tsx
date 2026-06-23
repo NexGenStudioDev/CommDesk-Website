@@ -7,7 +7,6 @@ import { SearchBar } from './SearchBar';
 import { UserMenu } from './UserMenu';
 import { ThemeToggle } from './ThemeToggle';
 import { MobileMenu } from './MobileMenu';
-import { CommandPalette } from './CommandPalette';
 import { navItems } from '../types/navbar.types';
 import { cn } from '../../../../utils/cn';
 
@@ -22,16 +21,13 @@ export const Navbar: React.FC<NavbarProps> = ({
   onAuthToggle,
   onSearch,
 }) => {
-  const { 
-    isScrolled, 
-    isMobileMenuOpen, 
-    toggleMobileMenu, 
-    isSearchOpen, 
-    toggleSearch 
+  const {
+    isScrolled,
+    isMobileMenuOpen,
+    toggleMobileMenu,
   } = useNavbar();
   const [shouldFocusMobileSearch, setShouldFocusMobileSearch] = useState(false);
 
-  // Mock user data
   const user = { name: 'Alex Johnson', avatar: '' };
 
   useEffect(() => {
@@ -43,7 +39,6 @@ export const Navbar: React.FC<NavbarProps> = ({
         return;
       }
 
-      // Check if mobile view
       const desktopSearch = document.querySelector<HTMLInputElement>(
         '[data-desktop-search]',
       );
@@ -83,10 +78,12 @@ export const Navbar: React.FC<NavbarProps> = ({
         )}
       >
         <div className="mx-auto flex h-full w-full max-w-[1600px] items-center gap-5 px-4 md:px-6 xl:gap-8 xl:px-8">
-          {/* Logo Section */}
+          {/* Logo */}
           <Link to="/" className="group flex shrink-0 items-center gap-2.5">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-purple-600 shadow-lg shadow-primary/20 transition-all duration-300 group-hover:rotate-3 group-hover:scale-105">
-              <span className="text-white font-black text-xl select-none">C</span>
+              <span className="text-white font-black text-xl select-none">
+                C
+              </span>
             </div>
             <span className="hidden bg-gradient-to-r from-foreground via-foreground to-primary/80 bg-clip-text text-lg font-black tracking-tight text-transparent sm:block 2xl:text-xl transition-all group-hover:to-primary">
               CommDesk
@@ -96,7 +93,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Navigation Links */}
           <NavLinks />
 
-          {/* Actions Section */}
+          {/* Actions */}
           <div className="ml-auto flex shrink-0 items-center gap-3">
             <SearchBar onSearch={onSearch} />
 
@@ -110,7 +107,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               onAuthToggle={onAuthToggle}
             />
 
-            {/* Mobile Menu Button */}
             <button
               onClick={openMobileMenu}
               aria-expanded={isMobileMenuOpen}
@@ -124,14 +120,6 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
       </header>
 
-      {/* Command Palette Search Overlay */}
-      <CommandPalette
-        isOpen={isSearchOpen}
-        onClose={toggleSearch}
-        onSearch={onSearch}
-      />
-
-      {/* Mobile Menu Drawer */}
       <MobileMenu
         isOpen={isMobileMenuOpen}
         onClose={closeMobileMenu}

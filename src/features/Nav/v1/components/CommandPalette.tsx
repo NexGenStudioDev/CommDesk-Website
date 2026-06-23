@@ -16,7 +16,6 @@ import {
   ArrowRight,
 } from 'lucide-react';
 
-
 interface CommandPaletteProps {
   isOpen: boolean;
   onClose: () => void;

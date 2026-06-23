@@ -1,21 +1,9 @@
 export default function Stats() {
   const stats = [
-    {
-      icon: '👥',
-      title: 'Community Driven',
-    },
-    {
-      icon: '📅',
-      title: 'Event Management',
-    },
-    {
-      icon: '📚',
-      title: 'Resource Sharing',
-    },
-    {
-      icon: '📱',
-      title: 'Responsive Design',
-    },
+    { icon: '👥', title: 'Community Driven' },
+    { icon: '📅', title: 'Event Management' },
+    { icon: '📚', title: 'Resource Sharing' },
+    { icon: '📱', title: 'Responsive Design' },
   ];
 
   return (
@@ -24,13 +12,16 @@ export default function Stats() {
         {stats.map((item) => (
           <div
             key={item.title}
-            className="bg-[#14192c] rounded-xl p-6 text-center"
+            className="bg-gray-100 dark:bg-[#14192c] rounded-xl p-6 text-center"
           >
-            <div className="text-3xl mb-3">
+            <span
+              role="img"
+              aria-hidden="true"
+              className="block text-3xl mb-3"
+            >
               {item.icon}
-            </div>
-
-            <h3 className="font-semibold">
+            </span>
+            <h3 className="font-semibold text-gray-900 dark:text-white">
               {item.title}
             </h3>
           </div>
