@@ -203,7 +203,8 @@ Contributions are welcome!
 # Create your feature branch
 git checkout -b feature/amazing-feature
 
-# Commit changes
+# Stage and commit changes
+git add .
 git commit -m "Add amazing feature"
 
 # Push
