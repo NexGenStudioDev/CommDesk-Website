@@ -1,3 +1,4 @@
+import { useNavbar } from '../hooks/useNavbar';
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -39,6 +40,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
   onSearch,
 }) => {
   const navigate = useNavigate();
+  const { theme, setTheme } = useNavbar();
   const overlayRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
@@ -109,17 +111,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
       id: 'action-theme',
       label: 'Toggle Theme',
       category: 'Actions',
-      action: () => {
-        const theme = localStorage.getItem('theme');
-        const nextTheme = theme === 'dark' ? 'light' : 'dark';
-        const root = window.document.documentElement;
-        root.classList.remove('light', 'dark');
-        root.classList.add(nextTheme);
-        root.setAttribute('data-theme', nextTheme);
-        localStorage.setItem('theme', nextTheme);
-        // Force state update by triggering reload/refresh or custom event if needed
-        window.dispatchEvent(new Event('storage'));
-      },
+      action: () => setTheme(theme === 'light' ? 'dark' : 'light'),
       icon: Laptop,
       description: 'Switch between light and dark mode',
     },
