@@ -92,7 +92,7 @@ Each feature contains:
 - **components/** → UI
 - **hooks/** → logic abstraction
 - **services/** → API/business logic
-- **slice/** → state management
+- **featureSlice.ts** → state management
 
 ---
 
